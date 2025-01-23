@@ -1,0 +1,9 @@
+spring:
+  liquibase:
+    enabled: true
+    change-log: classpath:/db-changelog.yaml
+
+  jpa:
+    properties:
+      hibernate:
+        jdbc.batch_size: 500

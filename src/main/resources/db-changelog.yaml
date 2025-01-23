@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: db_init
+      author: flipster
+      changes:
+        - createTable:
+            tableName: surrogate_entity
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+
+        - createSequence:
+            incrementBy: 500
+            sequenceName: seq
+            startValue: 1
+
+
+        - createTable:
+            tableName: real_non_surrogate_entity
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR
+                  constraints:
+                    nullable: false
+                    primaryKey: true
