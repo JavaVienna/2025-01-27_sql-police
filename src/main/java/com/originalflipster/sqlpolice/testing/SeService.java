@@ -13,8 +13,6 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import net.ttddyy.dsproxy.QueryCount;
-import net.ttddyy.dsproxy.QueryCountHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,20 +33,20 @@ public class SeService {
     this.inQueryRepo = inQueryRepo;
   }
 
-  public void create1000SurrogateEntities() {
-    repo.saveAll(IntStream.range(0, 500).mapToObj(it -> new SurrogateEntity()).collect(Collectors.toSet()));
+  public void createSurrogateEntities(final int count) {
+    repo.saveAll(IntStream.range(0, count).mapToObj(it -> new SurrogateEntity()).collect(Collectors.toSet()));
   }
 
-  public void create1000NonSurrogateEntities() {
-    nonSurrRepo.saveAll(IntStream.range(0, 1000).mapToObj(it -> new RealNonSurrogateEntity(UUID.randomUUID().toString())).collect(Collectors.toSet()));
+  public void createNonSurrogateEntities(final int count) {
+    nonSurrRepo.saveAll(IntStream.range(0, count).mapToObj(it -> new RealNonSurrogateEntity(UUID.randomUUID().toString())).collect(Collectors.toSet()));
   }
 
-  public void create1000NonSurrogateWithVersionEntities() {
-    nonSurrVersionRepo.saveAll(IntStream.range(0, 1000).mapToObj(it -> new NonSurrogateEntityWithVersion(UUID.randomUUID().toString())).collect(Collectors.toSet()));
+  public void createNonSurrogateWithVersionEntities(final int count) {
+    nonSurrVersionRepo.saveAllAndFlush(IntStream.range(0, count).mapToObj(it -> new NonSurrogateEntityWithVersion(UUID.randomUUID().toString())).collect(Collectors.toSet()));
   }
 
-  public void queryWithTupleInClause() {
-    inQueryRepo.saveAll(IntStream.range(0, 1000).mapToObj(it -> new InQueryEntity(Long.valueOf(it), new CompoundFilter(String.valueOf(it), String.valueOf(it)))).collect(
+  public void queryWithTupleInClause(final int count) {
+    inQueryRepo.saveAll(IntStream.range(0, count).mapToObj(it -> new InQueryEntity(Long.valueOf(it), new CompoundFilter(String.valueOf(it), String.valueOf(it)))).collect(
         Collectors.toSet()));
 
     inQueryRepo.findAllByCompoundIn(
