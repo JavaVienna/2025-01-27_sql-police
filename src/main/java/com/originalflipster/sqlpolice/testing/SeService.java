@@ -3,6 +3,8 @@ package com.originalflipster.sqlpolice.testing;
 import com.originalflipster.sqlpolice.in.CompoundFilter;
 import com.originalflipster.sqlpolice.in.InQueryEntity;
 import com.originalflipster.sqlpolice.in.InQueryRepo;
+import com.originalflipster.sqlpolice.nonsurrogate.NonSurrogateEntityWithVersion;
+import com.originalflipster.sqlpolice.nonsurrogate.NonSurrogateEntityWithVersionRepo;
 import com.originalflipster.sqlpolice.nonsurrogate.RealNonSurrogateEntity;
 import com.originalflipster.sqlpolice.nonsurrogate.RealNonSurrogateRepo;
 import com.originalflipster.sqlpolice.surrogate.SurrogateEntity;
@@ -20,12 +22,14 @@ public class SeService {
 
   private final SurrogateRepo repo;
   private final RealNonSurrogateRepo nonSurrRepo;
+  private final NonSurrogateEntityWithVersionRepo nonSurrVersionRepo;
   private final InQueryRepo inQueryRepo;
 
-  public SeService(SurrogateRepo repo, RealNonSurrogateRepo nonSurrRepo,
+  public SeService(SurrogateRepo repo, RealNonSurrogateRepo nonSurrRepo, NonSurrogateEntityWithVersionRepo nonSurrVersionRepo,
                    InQueryRepo inQueryRepo) {
     this.repo = repo;
     this.nonSurrRepo = nonSurrRepo;
+    this.nonSurrVersionRepo = nonSurrVersionRepo;
     this.inQueryRepo = inQueryRepo;
   }
 
@@ -35,6 +39,10 @@ public class SeService {
 
   public void createNonSurrogateEntities(final int count) {
     nonSurrRepo.saveAll(IntStream.range(0, count).mapToObj(it -> new RealNonSurrogateEntity(UUID.randomUUID().toString())).collect(Collectors.toSet()));
+  }
+
+  public void createNonSurrogateWithVersionEntities(final int count) {
+    nonSurrVersionRepo.saveAllAndFlush(IntStream.range(0, count).mapToObj(it -> new NonSurrogateEntityWithVersion(UUID.randomUUID().toString())).collect(Collectors.toSet()));
   }
 
   public void queryWithTupleInClause(final int count) {
