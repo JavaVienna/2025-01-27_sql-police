@@ -28,3 +28,20 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                     primaryKey: true
+
+
+        - createTable:
+            tableName: non_surrogate_entity_with_version
+            columns:
+              - column:
+                  name: name
+                  type: VARCHAR
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+
+              - column:
+                  name: version
+                  type: INT
+                  constraints:
+                    nullable: false
