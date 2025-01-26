@@ -1,4 +1,13 @@
 spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sql-police
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximumPoolSize: 10
+
   liquibase:
     enabled: true
     change-log: classpath:/db-changelog.yaml
@@ -6,4 +15,11 @@ spring:
   jpa:
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         jdbc.batch_size: 500
+
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
