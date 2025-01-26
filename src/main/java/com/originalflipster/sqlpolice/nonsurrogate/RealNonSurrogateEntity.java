@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class RealNonSurrogateEntity extends NonSurrogateEntity{
+public class RealNonSurrogateEntity {
 
   public RealNonSurrogateEntity() {}
 
@@ -15,7 +15,6 @@ public class RealNonSurrogateEntity extends NonSurrogateEntity{
   @Id
   private String id;
 
-  @Override
   public String getId() {
     return id;
   }
