@@ -19,7 +19,7 @@ public class NonSurrogateEntityWithVersion {
   private String name;
 
   @Version
-  private int version = 0;
+  private Integer version;
 
   public String getName() {
     return name;
@@ -29,11 +29,11 @@ public class NonSurrogateEntityWithVersion {
     this.name = name;
   }
 
-  public int getVersion() {
+  public Integer getVersion() {
     return version;
   }
 
-  protected void setVersion(int version) {
+  protected void setVersion(Integer version) {
     this.version = version;
   }
 }
