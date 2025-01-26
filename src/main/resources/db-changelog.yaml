@@ -13,12 +13,6 @@ databaseChangeLog:
                     nullable: false
                     primaryKey: true
 
-        - createSequence:
-            incrementBy: 500
-            sequenceName: seq
-            startValue: 1
-
-
         - createTable:
             tableName: real_non_surrogate_entity
             columns:
@@ -45,3 +39,12 @@ databaseChangeLog:
                   type: INT
                   constraints:
                     nullable: false
+
+  - changeSet:
+      id: add_sequence
+      author: flipster
+      changes:
+        - createSequence:
+            incrementBy: 500
+            sequenceName: seq
+            startValue: 1

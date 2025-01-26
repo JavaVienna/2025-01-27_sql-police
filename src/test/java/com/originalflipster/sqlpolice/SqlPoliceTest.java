@@ -50,21 +50,21 @@ public class SqlPoliceTest {
   }
 
   @Test
-  void create1000SurrogateEntities() {
+  void createSurrogateEntities() {
     repo.saveAllAndFlush(IntStream.range(0, 500).mapToObj(it -> new SurrogateEntity()).collect(Collectors.toSet()));
 
     log.info("Total Queries executed: {}", QueryCountHolder.getGrandTotal().getTotal());
   }
 
   @Test
-  void create1000NonSurrogateEntities() {
+  void createNonSurrogateEntities() {
     nonSurrRepo.saveAllAndFlush(IntStream.range(0, 1000).mapToObj(it -> new RealNonSurrogateEntity(UUID.randomUUID().toString())).collect(Collectors.toSet()));
 
     log.info("Total Queries executed: {}", QueryCountHolder.getGrandTotal().getTotal());
   }
 
   @Test
-  void create1000NonSurrogateWithVersionEntities() {
+  void createNonSurrogateWithVersionEntities() {
     nonSurrVersionRepo.saveAllAndFlush(IntStream.range(0, 1000).mapToObj(it -> new NonSurrogateEntityWithVersion(UUID.randomUUID().toString())).collect(Collectors.toSet()));
 
     log.info("Total Queries executed: {}", QueryCountHolder.getGrandTotal().getTotal());
