@@ -41,7 +41,7 @@ public class SqlPoliceTest {
 
   @Test
   void create1000SurrogateEntities() {
-    repo.saveAllAndFlush(IntStream.range(0, 500).mapToObj(it -> new SurrogateEntity()).collect(Collectors.toSet()));
+    repo.saveAllAndFlush(IntStream.range(0, 1000).mapToObj(it -> new SurrogateEntity()).collect(Collectors.toSet()));
 
     QueryCount count = QueryCountHolder.getGrandTotal();
     System.out.println(count.getTotal());

@@ -12,8 +12,7 @@ import jakarta.persistence.Table;
 public class SurrogateEntity {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
-  @SequenceGenerator(name = "seq", allocationSize = 500)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   public Long getId() {

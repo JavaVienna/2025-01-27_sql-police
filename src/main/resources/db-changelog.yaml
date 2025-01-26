@@ -13,10 +13,10 @@ databaseChangeLog:
                     nullable: false
                     primaryKey: true
 
-        - createSequence:
-            incrementBy: 500
-            sequenceName: seq
-            startValue: 1
+#        - createSequence:
+#            incrementBy: 1
+#            sequenceName: seq
+#            startValue: 1
 
 
         - createTable:

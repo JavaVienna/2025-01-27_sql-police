@@ -1,0 +1,21 @@
+version: '3'
+services:
+  sql-police-db:
+    image: "postgres:12"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: sql-police
+    ports:
+      - "5432:5432"
+    networks:
+      - sql-police
+    volumes:
+      - sql-police-data:/var/lib/postgresql/data
+
+networks:
+  sql-police:
+    driver: bridge
+
+volumes:
+  sql-police-data:
