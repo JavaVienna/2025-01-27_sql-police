@@ -20,6 +20,10 @@ public class InQueryEntity extends NonSurrogateEntity<Long> {
 
   }
 
+  public InQueryEntity(final CompoundFilter compound) {
+    this.compound = compound;
+  }
+
   public InQueryEntity(final Long id, final CompoundFilter compound) {
     this.id = id;
     this.compound = compound;
