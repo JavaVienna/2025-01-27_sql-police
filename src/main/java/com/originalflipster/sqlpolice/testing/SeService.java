@@ -42,7 +42,7 @@ public class SeService {
   }
 
   public void createNonSurrogateWithVersionEntities(final int count) {
-    nonSurrVersionRepo.saveAllAndFlush(IntStream.range(0, count).mapToObj(it -> new NonSurrogateEntityWithVersion(UUID.randomUUID().toString())).collect(Collectors.toSet()));
+    nonSurrVersionRepo.saveAll(IntStream.range(0, count).mapToObj(it -> new NonSurrogateEntityWithVersion(UUID.randomUUID().toString())).collect(Collectors.toSet()));
   }
 
   public void queryWithTupleInClause(final int count) {
