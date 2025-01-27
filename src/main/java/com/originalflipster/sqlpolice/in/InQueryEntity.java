@@ -13,16 +13,18 @@ public class InQueryEntity extends NonSurrogateEntity<Long> {
   @Id
   private Long id;
 
-  @Embedded
-  private CompoundFilter compound;
+  private String thingyId;
+
+  private String groupId;
 
   public InQueryEntity() {
 
   }
 
-  public InQueryEntity(final Long id, final CompoundFilter compound) {
+  public InQueryEntity(final Long id, final String thingyId, final String groupId) {
     this.id = id;
-    this.compound = compound;
+    this.thingyId = thingyId;
+    this.groupId = groupId;
   }
 
   public Long getId() {
@@ -33,11 +35,19 @@ public class InQueryEntity extends NonSurrogateEntity<Long> {
     this.id = id;
   }
 
-  public CompoundFilter getCompound() {
-    return compound;
+  public String getThingyId() {
+    return thingyId;
   }
 
-  public void setCompound(CompoundFilter compound) {
-    this.compound = compound;
+  public void setThingyId(String thingyId) {
+    this.thingyId = thingyId;
+  }
+
+  public String getGroupId() {
+    return groupId;
+  }
+
+  public void setGroupId(String groupId) {
+    this.groupId = groupId;
   }
 }

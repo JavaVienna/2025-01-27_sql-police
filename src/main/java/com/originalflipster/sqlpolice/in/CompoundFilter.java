@@ -32,4 +32,8 @@ public class CompoundFilter implements Serializable {
   public void setGroupId(String groupId) {
     this.groupId = groupId;
   }
+
+  public String toString() {
+    return groupId + "-" + thingyId;
+  }
 }

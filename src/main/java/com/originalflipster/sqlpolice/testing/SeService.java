@@ -46,10 +46,11 @@ public class SeService {
   }
 
   public void queryWithTupleInClause(final int count) {
-    inQueryRepo.saveAll(IntStream.range(0, count).mapToObj(it -> new InQueryEntity(Long.valueOf(it), new CompoundFilter(String.valueOf(it), String.valueOf(it)))).collect(
+    inQueryRepo.saveAll(IntStream.range(0, count).mapToObj(it -> new InQueryEntity(Long.valueOf(it), String.valueOf(it), String.valueOf(it))).collect(
         Collectors.toSet()));
 
     inQueryRepo.findAllByCompoundIn(
-        Set.of(new CompoundFilter("5", "5"), new CompoundFilter("78", "78"), new CompoundFilter("100", "100")));
+        Set.of(new CompoundFilter("5", "5"), new CompoundFilter("78", "78"), new CompoundFilter("100", "100")).stream().map(it -> it.toString()).collect(
+            Collectors.toSet()));
   }
 }
