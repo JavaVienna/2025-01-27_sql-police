@@ -57,6 +57,14 @@ public class Trigger {
     log.info("Created {} Entities with unique id & version, using {} queries in {} ms", seCount, QueryCountHolder.getGrandTotal().getTotal(), watch.getTotalTimeMillis());
   }
 
+  @GetMapping(value = "/init-in-clause")
+  @ResponseStatus(HttpStatus.OK)
+  public void initTupleInClause(@RequestParam(name = "count", required = false) Integer count) {
+    final int seCount = count != null ? count : 500;
+    service.queryWithTupleInClause(seCount);
+    log.info("Created {} entities for in clause tuples", seCount);
+  }
+
   @GetMapping(value = "/in-clause")
   @ResponseStatus(HttpStatus.OK)
   public void queryWithTupleInClause(@RequestParam(name = "count", required = false) Integer count) {
