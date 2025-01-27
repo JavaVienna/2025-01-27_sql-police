@@ -45,11 +45,11 @@ public class SeService {
     nonSurrVersionRepo.saveAll(IntStream.range(0, count).mapToObj(it -> new NonSurrogateEntityWithVersion(UUID.randomUUID().toString())).collect(Collectors.toSet()));
   }
 
-  public void queryWithTupleInClause(final int count) {
+  public void initTupleInClause(final int count) {
     inQueryRepo.saveAll(IntStream.range(0, count).mapToObj(it -> new InQueryEntity(String.valueOf(it), String.valueOf(it))).collect(Collectors.toSet()));
+  }
 
-    inQueryRepo.findAllByCompoundIn(
-        Set.of(new CompoundFilter("5", "5"), new CompoundFilter("78", "78"), new CompoundFilter("100", "100")).stream().map(it -> it.toString()).collect(
-            Collectors.toSet()));
+  public void queryWithTupleInClause(final int count) {
+    inQueryRepo.findAllByCompoundIn(IntStream.range(0, count).mapToObj(it -> new CompoundFilter(String.valueOf(it), String.valueOf(it))).map(CompoundFilter::toString).collect(Collectors.toSet()));
   }
 }
