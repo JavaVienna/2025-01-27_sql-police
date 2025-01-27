@@ -61,7 +61,7 @@ public class Trigger {
   @ResponseStatus(HttpStatus.OK)
   public void initTupleInClause(@RequestParam(name = "count", required = false) Integer count) {
     final int seCount = count != null ? count : 500;
-    service.queryWithTupleInClause(seCount);
+    service.initTupleInClause(seCount);
     log.info("Created {} entities for in clause tuples", seCount);
   }
 
