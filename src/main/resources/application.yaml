@@ -7,8 +7,8 @@ spring:
     driver-class-name: org.postgresql.Driver
     hikari:
       maximumPoolSize: 10
-      data-source-properties:
-        reWriteBatchedInserts: true
+#      data-source-properties:
+#        reWriteBatchedInserts: true
 
   liquibase:
     enabled: true
@@ -19,9 +19,9 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         #jdbc.batch_size: 500
-        order_inserts: true
-        order_updates: true
-        batch_versioned_data: true
+#        order_inserts: true
+#        order_updates: true
+#        batch_versioned_data: true
 
 
 server:
