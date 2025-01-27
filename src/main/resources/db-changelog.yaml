@@ -41,10 +41,10 @@ databaseChangeLog:
                   constraints:
                     nullable: false
 
-  - changeSet:
-      id: add_sequence
-      author: flipster
-      changes:
+#  - changeSet:
+#      id: add_sequence
+#      author: flipster
+#      changes:
 #        - createSequence:
 #            incrementBy: 1
 #            sequenceName: seq
