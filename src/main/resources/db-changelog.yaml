@@ -64,14 +64,14 @@ databaseChangeLog:
                   constraints:
                     nullable: false
 
-  #  - changeSet:
-  #      id: add_sequence
-  #      author: flipster
-  #      changes:
-  #        - createSequence:
-  #            incrementBy: 1
-  #            sequenceName: seq
-  #            startValue: 1
+  - changeSet:
+      id: add_sequence
+      author: flipster
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: seq
+            startValue: 1
 
 
 
