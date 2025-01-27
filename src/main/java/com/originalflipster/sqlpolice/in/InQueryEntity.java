@@ -57,4 +57,8 @@ public class InQueryEntity extends NonSurrogateEntity<Long> {
   public void setGroupId(String groupId) {
     this.groupId = groupId;
   }
+
+  public String toString() {
+    return groupId + "-" + thingyId;
+  }
 }

@@ -72,10 +72,11 @@ public class SqlPoliceTest {
 
   @Test
   void queryWithTupleInClause() {
-    inQueryRepo.saveAllAndFlush(IntStream.range(0, 1000).mapToObj(it -> new InQueryEntity(Long.valueOf(it), new CompoundFilter(String.valueOf(it), String.valueOf(it)))).collect(
+    int count = 1000;
+    inQueryRepo.saveAllAndFlush(IntStream.range(0, count).mapToObj(it -> new InQueryEntity(String.valueOf(it), String.valueOf(it))).collect(
         Collectors.toSet()));
 
-    inQueryRepo.findAllByCompoundIn(Set.of(new CompoundFilter("5", "5"), new CompoundFilter("78", "78"), new CompoundFilter("100", "100")));
+    inQueryRepo.findAllByCompoundIn(IntStream.range(0, count).mapToObj(it -> new CompoundFilter(String.valueOf(it), String.valueOf(it))).map(CompoundFilter::toString).collect(Collectors.toSet()));
 
     log.info("Total Queries executed: {}", QueryCountHolder.getGrandTotal().getTotal());
   }
