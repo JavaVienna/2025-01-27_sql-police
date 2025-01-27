@@ -41,6 +41,30 @@ databaseChangeLog:
                   constraints:
                     nullable: false
 
+
+        - createTable:
+            tableName: in_query_entity
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+
+              - column:
+                  name: group_id
+                  type: VARCHAR
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: thingy_id
+                  type: VARCHAR
+                  constraints:
+                    nullable: false
+
   - changeSet:
       id: add_sequence
       author: flipster
