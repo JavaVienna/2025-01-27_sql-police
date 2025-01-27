@@ -1,7 +1,6 @@
 package com.originalflipster.sqlpolice.in;
 
 import com.originalflipster.sqlpolice.nonsurrogate.NonSurrogateEntity;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -19,6 +18,11 @@ public class InQueryEntity extends NonSurrogateEntity<Long> {
 
   public InQueryEntity() {
 
+  }
+
+  public InQueryEntity(final String thingyId, final String groupId) {
+    this.thingyId = thingyId;
+    this.groupId = groupId;
   }
 
   public InQueryEntity(final Long id, final String thingyId, final String groupId) {
