@@ -46,7 +46,8 @@ public class SeService {
   }
 
   public void initTupleInClause(final int count) {
-    inQueryRepo.saveAll(IntStream.range((int)inQueryRepo.count(), count).mapToObj(it -> new InQueryEntity(String.valueOf(it), String.valueOf(it))).collect(Collectors.toSet()));
+    final int currCount = (int) inQueryRepo.count();
+    inQueryRepo.saveAll(IntStream.range(currCount, currCount + count).mapToObj(it -> new InQueryEntity(String.valueOf(it), String.valueOf(it))).collect(Collectors.toSet()));
   }
 
   public void queryWithTupleInClause(final int count) {
